@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Screen-Care - Skrining Awal Kesehatan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 class="fade-in">🩺 Screen-Care</h1>
+    <p class="slide-in">Deteksi Dini, Hidup Lebih Sehat</p>
+  </header>
+
+  <section class="hero fade-in-up">
+    <img src="https://cdn.pixabay.com/photo/2020/04/09/09/50/check-up-5010176_1280.jpg" alt="Skrining Kesehatan">
+  </section>
+
+  <section class="content">
+    <h2 class="slide-in-left">Checklist Skrining Mandiri</h2>
+    <p>Centang pernyataan yang sesuai dengan kondisi Anda:</p>
+
+    <form id="checklist-form">
+      <div class="checklist animated">
+        <label><input type="checkbox" value="1"> Usia saya di atas 30 tahun</label>
+        <label><input type="checkbox" value="1"> Riwayat keluarga diabetes/hipertensi</label>
+        <label><input type="checkbox" value="1"> Saya merokok atau terpapar asap rokok</label>
+        <label><input type="checkbox" value="1"> Kurang olahraga & sering duduk lama</label>
+        <label><input type="checkbox" value="1"> Berat badan berlebih/obesitas</label>
+        <label><input type="checkbox" value="1"> Sering lelah, haus, atau sering buang air kecil</label>
+        <label><input type="checkbox" value="1"> Belum cek gula darah/kolesterol tahun ini</label>
+        <label><input type="checkbox" value="1"> Mengalami stres berat atau sulit tidur</label>
+        <label><input type="checkbox" value="1"> Belum pernah skrining kanker (Pap smear/PSA)</label>
+      </div>
+      <br>
+      <button type="button" onclick="hitungRisiko()">🎯 Lihat Hasil</button>
+    </form>
+
+    <div id="hasil" class="hasil bounce-in"></div>
+  </section>
+
+  <section class="contact">
+    <h2>💬 Ingin Bertanya Lebih Lanjut?</h2>
+    <p>Konsultasi gratis dengan tim kami via WhatsApp:</p>
+    <a class="wa-button" href="https://wa.me/6281234567890?text=Halo%20Screen-Care%2C%20saya%20ingin%20bertanya%20tentang%20skrining%20kesehatan." target="_blank">💬 Tanya via WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Screen-Care Indonesia | Menuju Hidup Sehat Dimulai dari Skrining Dini</p>
+  </footer>
+
+  <script>
+    function hitungRisiko() {
+      const ceklis = document.querySelectorAll('input[type="checkbox"]:checked');
+      const hasil = document.getElementById("hasil");
+
+      if (ceklis.length >= 5) {
+        hasil.innerHTML = `
+          <h3>⚠️ Risiko Tinggi</h3>
+          <p>Segera lakukan pemeriksaan lengkap di fasilitas kesehatan terdekat.</p>
+        `;
+        hasil.style.backgroundColor = "#ffe5e5";
+      } else if (ceklis.length >= 3) {
+        hasil.innerHTML = `
+          <h3>🟡 Risiko Sedang</h3>
+          <p>Perbaiki gaya hidup dan pertimbangkan melakukan skrining dasar.</p>
+        `;
+        hasil.style.backgroundColor = "#fff9c4";
+      } else {
+        hasil.innerHTML = `
+          <h3>✅ Risiko Rendah</h3>
+          <p>Bagus! Pertahankan pola hidup sehat dan cek rutin tiap tahun.</p>
+        `;
+        hasil.style.backgroundColor = "#e0f7fa";
+      }
+
+      hasil.classList.add("show");
+    }
+  </script>
+</body>
+</html>
